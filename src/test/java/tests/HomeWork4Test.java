@@ -22,6 +22,18 @@ public class HomeWork4Test {
     void selenideGithubTest() {
         open("/selenide/selenide");
         $("#wiki-tab").click();
-        $$("#wiki-body ul li").findBy(text("Soft assertions")).shouldBe(visible);
+        $$("#wiki-body ul li").findBy(text("Soft assertions")).$("a").shouldBe(visible).click();
+        $("#wiki-content").shouldHave(text("""
+                @ExtendWith({SoftAssertsExtension.class})
+                class Tests {
+                  @Test
+                  void test() {
+                    Configuration.assertionMode = SOFT;
+                    open("page.html");
+                
+                    $("#first").should(visible).click();
+                    $("#second").should(visible).click();
+                  }
+                }"""));
     }
 }
