@@ -26,11 +26,10 @@ public class HomeWork5Test {
         $$(".HeaderMenu-column ul li").filterBy(text("Enterprises")).first().click();
         webdriver().shouldHave(title("The AI Powered Developer Platform. · GitHub"));
         $("[data-testid=SubNav-root]").shouldHave(text("Enterprise"));
-        // sleep(5000);
     }
 
     @Test
-    void dragNDropTest() {
+    void dragNDropTestWithActions() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         $("#columns").$$(".column").first().shouldHave(text("A"));
         actions()
@@ -39,8 +38,13 @@ public class HomeWork5Test {
                 .release()
                 .perform();
         $("#columns").$$(".column").first().shouldHave(text("B"));
+    }
 
-        $("#column-a").dragAndDrop(to("#column-b"));
+    @Test
+    void dragNDropTestWithDragAndDrop() {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
         $("#columns").$$(".column").first().shouldHave(text("A"));
+        $("#column-a").dragAndDrop(to("#column-b"));
+        $("#columns").$$(".column").first().shouldHave(text("B"));
     }
 }
