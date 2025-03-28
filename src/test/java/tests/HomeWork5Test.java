@@ -1,15 +1,17 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.junit5.SoftAssertsExtension;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.DragAndDropOptions.to;
 import static com.codeborne.selenide.WebDriverConditions.title;
 import static com.codeborne.selenide.Selenide.*;
 
-
+@ExtendWith(SoftAssertsExtension.class)
 public class HomeWork5Test {
 
     @BeforeAll
