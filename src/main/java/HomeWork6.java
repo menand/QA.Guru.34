@@ -14,7 +14,12 @@ public class HomeWork6 {
         System.out.println("3>2 = "+(3>2));
         System.out.println("3<=2 = "+(3<=2));
 
-        System.out.println("Пример переполнения");
+        System.out.println("Пример переполнения для дробных");
+        System.out.println("Переполнение double вверх 1: " + (Double.MAX_VALUE*2));
+        System.out.println("Переполнение double вверх 2: " + (-Double.MAX_VALUE*2));
+        System.out.println("Переполнение double вниз: " + (Double.MIN_VALUE * 0.5));
+        
+        System.out.println("Пример переполнения для Целых");
         System.out.println("переполнение для int = "+(2147483647+a));
     }
 }
