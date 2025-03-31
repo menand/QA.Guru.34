@@ -1,4 +1,4 @@
-public class HomeWork6 {
+public class HWAdditionalJava1 {
     public static void main(String[] args) {
         int a=1, b=2;
         double myPi=3.1415926;
