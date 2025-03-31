@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.visible;
 
-public class HomeWork3 {
+public class HomeWork3Test {
 
     @BeforeAll
     static void beforeAll() {
@@ -44,7 +44,7 @@ public class HomeWork3 {
         $(".react-datepicker__day--019").click();
         $("#subjectsInput").setValue("Comm").pressEnter();
         $("#hobbies-checkbox-3").parent().$(byText("Music")).click();
-        $("#uploadPicture").uploadFromClasspath("ava.jpg");
+        $("#uploadPicture").uploadFromClasspath("images/ava.jpg");
         $("#currentAddress").setValue("Russia, Moscow");
         $("#state").click();
         $(byText("Haryana")).click();
@@ -62,7 +62,7 @@ public class HomeWork3 {
         $(".modal-content").shouldHave(text("19 March,1988"));
         $(".modal-content").shouldHave(text("Commerce"));
         $(".modal-content").shouldHave(text("Music"));
-        $(".modal-content").shouldHave(text("ava.jpg"));
+        $(".modal-content").shouldHave(text("images/ava.jpg"));
         $(".modal-content").shouldHave(text("Russia, Moscow"));
         $(".modal-content").shouldHave(text("Haryana Panipat"));
 
