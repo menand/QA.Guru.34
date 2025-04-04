@@ -1,13 +1,19 @@
 package lesson07.utils;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Locale;
+import net.datafaker.Faker;
 
 public class RandomUtils {
-    public static int getRandomInt(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    Faker faker = new Faker(new Locale("en-GB"));
+
+    public  String findCityByState(String state) {
+        return switch (state) {
+            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana" -> faker.options().option("Karnal", "Panipat");
+            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+            default -> "";
+        };
     }
 
-    public static String getRandomItemFromArray(String[] array) {
-        return array[getRandomInt(0, array.length - 1)];
-    }
 }

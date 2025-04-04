@@ -2,6 +2,7 @@ package lesson07.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import lesson07.utils.RandomUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,10 +13,8 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import static lesson07.utils.RandomUtils.getRandomItemFromArray;
-
 public class TestBase {
-    public static String firstName,
+    public String firstName,
             lastName,
             userEmail,
             gender,
@@ -27,8 +26,8 @@ public class TestBase {
             hobbies,
             uploadImage = "images/ava.jpg",
             currentAddress,
-            state = "Rajasthan",
-            city = "Jaipur";
+            state,
+            city;
 
     Faker faker = new Faker(new Locale("en-GB"));
 
@@ -57,27 +56,13 @@ public class TestBase {
         monthOfBirth = fullDayOfBirthday.format(formatter);
         dayOfBirth= String.valueOf(fullDayOfBirthday.getDayOfMonth());
         yearOfBirth=String.valueOf(fullDayOfBirthday.getYear());
-        subject= getRandomSubject();
+        subject= faker.options().option("Maths","English","Physics","Chemistry","Biology","Computer Science","Commerce",
+                "Accounting","Economics","Arts","Social Studies","History","Civics");
         hobbies = faker.options().option("Sports", "Music", "Reading");
         currentAddress=faker.address().fullAddress();
         state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
-        city = findCityByState(state);
+        city = new RandomUtils().findCityByState(state);
     }
 
-    private String findCityByState(String state) {
-        return switch (state) {
-            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
-            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
-            case "Haryana" -> faker.options().option("Karnal", "Panipat");
-            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
-            default -> "";
-        };
-    }
 
-    private String getRandomSubject() {
-        String[] subjects = {"Maths","English","Physics","Chemistry","Biology","Computer Science","Commerce",
-                "Accounting","Economics","Arts","Social Studies","History","Civics"};
-
-        return getRandomItemFromArray(subjects);
-    }
 }
