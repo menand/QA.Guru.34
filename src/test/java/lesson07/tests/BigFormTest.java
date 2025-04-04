@@ -16,29 +16,29 @@ public class BigFormTest extends TestBase {
     void successRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
-                .setGender(gender)
-                .setNumber(userNumber)
-                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
-                .setSubjects(subject)
-                .setHobbies(hobbies)
-                .setPicture(uploadImage)
-                .setAddress(currentAddress)
-                .setStateAndCity(state, city)
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setEmail(testData.userEmail)
+                .setGender(testData.gender)
+                .setNumber(testData.userNumber)
+                .setDateOfBirth(testData.dayOfBirth, testData.monthOfBirth, testData.yearOfBirth)
+                .setSubjects(testData.subject)
+                .setHobbies(testData.hobbies)
+                .setPicture(testData.uploadImage)
+                .setAddress(testData.currentAddress)
+                .setStateAndCity(testData.state, testData.city)
                 .submitForm();
 
-        registrationPage.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Student Email", userEmail)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", dayOfBirth + " " + monthOfBirth + "," + yearOfBirth)
-                .checkResult("Subjects", subject)
-                .checkResult("Hobbies", hobbies)
-                .checkResult("Picture", new File(uploadImage).getName())
-                .checkResult("Address", currentAddress)
-                .checkResult("State and City", state + " " + city);
+        registrationPage.checkResult("Student Name", testData.firstName + " " + testData.lastName)
+                .checkResult("Student Email", testData.userEmail)
+                .checkResult("Gender", testData.gender)
+                .checkResult("Mobile", testData.userNumber)
+                .checkResult("Date of Birth", testData.dayOfBirth + " " + testData.monthOfBirth + "," + testData.yearOfBirth)
+                .checkResult("Subjects", testData.subject)
+                .checkResult("Hobbies", testData.hobbies)
+                .checkResult("Picture", new File(testData.uploadImage).getName())
+                .checkResult("Address", testData.currentAddress)
+                .checkResult("State and City", testData.state + " " + testData.city);
     }
 
     @Test
@@ -46,15 +46,15 @@ public class BigFormTest extends TestBase {
     void minimalInputDataTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setNumber(userNumber)
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setGender(testData.gender)
+                .setNumber(testData.userNumber)
                 .submitForm();
 
-        registrationPage.checkResult("Student Name", firstName + " " + lastName)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", userNumber);
+        registrationPage.checkResult("Student Name", testData.firstName + " " + testData.lastName)
+                .checkResult("Gender", testData.gender)
+                .checkResult("Mobile", testData.userNumber);
     }
 
     @Test
@@ -62,9 +62,9 @@ public class BigFormTest extends TestBase {
     void negativeRegistrationTest() {
         registrationPage.openPage()
                 .removeBanner()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(gender)
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setGender(testData.gender)
                 .setNumber("12345")
                 .submitForm();
 
