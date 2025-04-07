@@ -8,8 +8,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.DragAndDropOptions.to;
-import static com.codeborne.selenide.WebDriverConditions.title;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverConditions.title;
 
 @ExtendWith(SoftAssertsExtension.class)
 public class HomeWork5Test {

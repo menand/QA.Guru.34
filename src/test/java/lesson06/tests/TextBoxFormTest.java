@@ -21,9 +21,9 @@ public class TextBoxFormTest extends TestBase {
                 .setPermanentAddress(permanentAddress)
                 .submitForm();
 
-        textBoxFormPage.checkResult("name",userName)
-                .checkResult("email",userEmail)
-                .checkResult("currentAddress",currentAddress)
-                .checkResult("permanentAddress",permanentAddress);
+        textBoxFormPage.checkResult("name", userName)
+                .checkResult("email", userEmail)
+                .checkResult("currentAddress", currentAddress)
+                .checkResult("permanentAddress", permanentAddress);
     }
 }

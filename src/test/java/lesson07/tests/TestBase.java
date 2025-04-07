@@ -26,7 +26,7 @@ public class TestBase {
 
     @BeforeEach
     void beforeEach() {
-       testData = new TestData();
+        testData = new TestData();
     }
 
 
