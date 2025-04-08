@@ -1,0 +1,27 @@
+{
+  "title": "menand's shop",
+  "is_real": false,
+  "address": {
+    "City": "Moscow",
+    "Street": null,
+    "HouseNumber": 5
+  },
+  "staff": [
+    {
+      "title": "Director",
+      "name": "Andrey",
+      "salary": 100500
+    },
+    {
+      "title": "Seller",
+      "name": "Katya",
+      "salary": 100
+    },
+    {
+      "title": "Seller",
+      "name": "Masha",
+      "salary": 500
+    }
+  ]
+
+}

@@ -30,7 +30,14 @@ dependencies {
     testImplementation 'org.junit.platform:junit-platform-launcher:1.12.1'
     implementation 'com.codeborne:selenide:7.8.1'
     testImplementation 'org.slf4j:slf4j-simple:2.0.17'
+    testImplementation 'org.apache.logging.log4j:log4j-to-slf4j:2.24.3'
     implementation 'net.datafaker:datafaker:2.4.3'
+    testImplementation 'com.codeborne:xls-test:1.4.3'
+    testImplementation 'com.codeborne:pdf-test:1.5.0'
+    testImplementation 'com.opencsv:opencsv:5.8'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.18.3'
+    /*testImplementation 'com.codeborne:xls-test:1.7.2'
+    testImplementation 'com.codeborne:pdf-test:1.9.2'*/
 }
 
 test {
