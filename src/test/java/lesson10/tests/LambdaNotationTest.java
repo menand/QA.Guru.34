@@ -1,5 +1,7 @@
 package lesson10.tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +12,7 @@ import static io.qameta.allure.Allure.step;
 
 public class LambdaNotationTest extends TestBase {
     private static final String PROJECTNAME = "selenide";
+
 
     @DisplayName("Тест с использованием Lambda-функций")
     @Test

@@ -11,8 +11,6 @@ public class PureSelenidTest extends TestBase{
 
     @Test
     public void testWithPureSelenide() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
         open("/");
         $(".input-button").click();
         $("#query-builder-test").setValue("selenide").submit();
