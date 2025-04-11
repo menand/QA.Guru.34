@@ -60,13 +60,26 @@ dependencies {
     testImplementation 'com.codeborne:pdf-test:1.9.2'*/
 }
 
-test {
-    systemProperties(System.getProperties())
+
+tasks.withType(Test).configureEach {
     useJUnitPlatform()
+
     testLogging {
-        events "passed", "skipped", "failed"
-        exceptionFormat "full"
-        showExceptions true
-        showStandardStreams true
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+tasks.register('all_tests', Test) {
+    useJUnitPlatform {
+
+    }
+}
+
+tasks.register('lesson11', Test) {
+    useJUnitPlatform {
+        includeTags("lesson11")
     }
 }
