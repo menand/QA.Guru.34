@@ -1,5 +1,7 @@
 package lesson11.tests;
 
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +19,15 @@ public class LambdaNotationTest extends TestBase {
     public void testLambdaNotation() {
         step("Открываем главную страницу", () -> {
             open("/");
+            if (Configuration.browser.equalsIgnoreCase("firefox"))
+                Selenide.executeJavaScript(
+                        "window.consoleLogs = [];" +
+                                "window.console.log = function(message) {" +
+                                "   window.consoleLogs.push(message);" +
+                                "   return originalConsoleLog.apply(console, arguments);" +
+                                "};" +
+                                "var originalConsoleLog = console.log;"
+                );
         });
         step("Ищем репозиторий " + PROJECTNAME, () -> {
             $(".input-button").click();

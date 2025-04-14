@@ -36,15 +36,6 @@ public class TestBase {
     @BeforeEach
     void beforeEach() {
         SelenideLogger.addListener("allure", new AllureSelenide());
-        if (Configuration.browser.equalsIgnoreCase("firefox"))
-            Selenide.executeJavaScript(
-                    "window.consoleLogs = [];" +
-                            "window.console.log = function(message) {" +
-                            "   window.consoleLogs.push(message);" +
-                            "   return originalConsoleLog.apply(console, arguments);" +
-                            "};" +
-                            "var originalConsoleLog = console.log;"
-            );
     }
 
     @AfterEach
