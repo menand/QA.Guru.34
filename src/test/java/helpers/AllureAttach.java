@@ -1,5 +1,6 @@
 package helpers;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -30,10 +31,17 @@ public class AllureAttach {
     }
 
     public static void browserConsoleLogs() {
-        attachAsText(
-                "Browser console logs",
-                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
-        );
+        if (Configuration.browser.equalsIgnoreCase("firefox")) {
+            String logs = (String) Selenide.executeJavaScript(
+                    "return Array.from(console.logs).join('\\n');"
+            );
+            attachAsText("Console logs (JS)", logs);
+        } else {
+            attachAsText(
+                    "Browser console logs",
+                    String.join("\n", Selenide.getWebDriverLogs(BROWSER))
+            );
+        }
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
