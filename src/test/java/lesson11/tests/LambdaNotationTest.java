@@ -19,15 +19,6 @@ public class LambdaNotationTest extends TestBase {
     public void testLambdaNotation() {
         step("Открываем главную страницу", () -> {
             open("/");
-            if (Configuration.browser.equalsIgnoreCase("firefox"))
-                Selenide.executeJavaScript(
-                        "window.consoleLogs = [];" +
-                                "window.console.log = function(message) {" +
-                                "   window.consoleLogs.push(message);" +
-                                "   return originalConsoleLog.apply(console, arguments);" +
-                                "};" +
-                                "var originalConsoleLog = console.log;"
-                );
         });
         step("Ищем репозиторий " + PROJECTNAME, () -> {
             $(".input-button").click();
