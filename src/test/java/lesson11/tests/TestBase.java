@@ -17,7 +17,8 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
-        Configuration.browserSize = "1280x720";
+        Configuration.browser=System.getProperty("browser", "chrome");
+        Configuration.browserSize = System.getProperty("windowSize", "1280x720");
         Configuration.baseUrl = "https://github.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
