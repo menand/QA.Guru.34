@@ -16,10 +16,10 @@ import java.util.Map;
 @Tag("lesson11")
 public class TestBase {
     @BeforeAll
-    static void beforeAll() {
+    static void setupConfigurationForTests() {
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserSize = System.getProperty("windowSize", "1280x720");
-        Configuration.browserVersion = System.getProperty("browserVersion", "latest");
+        Configuration.browserVersion = System.getProperty("browserVersion", "127.0");
         Configuration.baseUrl = "https://github.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.remote =
@@ -34,12 +34,12 @@ public class TestBase {
     }
 
     @BeforeEach
-    void beforeEach() {
+    void setSelenideLogger() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @AfterEach
-    void afterEach() {
+    void addAttachmentsAndCloseWebDriver() {
         AllureAttach.screenshotAs("Last screenshot");
         AllureAttach.pageSource();
         AllureAttach.browserConsoleLogs();
